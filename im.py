@@ -12,15 +12,34 @@ while menu == True: #add reorder list function
     if response == '1':
         print('You want to add a task.')
         new_task = input('Enter a task: ')
-        try:
-            new_task_num = int(input('Enter the order of the task in the list: '))
-            task_list.insert(new_task_num - 1  , new_task)
-            print("Here's your new list:")
+
+
+        done = False
+        while not done:
+            try:
+                new_task_num = int(input('Enter the order of the task in the list: '))
+                task_list.insert(new_task_num - 1  , new_task)
+                print("Here's your new list:")
+                done = True
+
+
+                    #add back to menu or exit choice after every function
+            except ValueError: #I should add an error if the number is way more than the amount of items in the list like 78 and if its negative or 0
+                print("Please enter a valid number.")
 
 
 
-        except ValueError: #I should add an error if the number is way more than the amount of items in the list like 78 and if its negative or 0
-            print("That's not a number.") #this should return you to the beginning of 'try'
+
+
+
+
+
+
+
+
+
+
+
 
     elif response == '2':
         print('You want to view tasks.\n')
