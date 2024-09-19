@@ -17,28 +17,34 @@ while menu == True: #add reorder list function
         done = False
         while not done:
             try:
-                new_task_num = int(input('Enter the order of the task in the list: '))
-                task_list.insert(new_task_num - 1  , new_task)
-                print("Here's your new list:")
-                done = True
+                new_task_num = int(input('Enter the order of the task in the list (1-' + str(len(task_list)+1) + '): '))
+                if new_task_num > len(task_list)+1 or new_task_num <= 0:
+                    print("That number is too big! Or maybe too small?")
+                else:
+                    task_list.insert(new_task_num - 1  , new_task)
+                    print("Here's your new list:")
+                    for task in task_list:
+                        print(" " + str(task_list.index(task)+1) + ". " + task)
+                    done = True
 
-
-                    #add back to menu or exit choice after every function
-            except ValueError: #I should add an error if the number is way more than the amount of items in the list like 78 and if its negative or 0
-                print("Please enter a valid number.")
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    doneso = False
+                    while not doneso:
+                        quit_inquiry = input('\nWould you like to quit? Yes/No: ').lower()
+                        if quit_inquiry: #checks if its not an empty string
+                            if quit_inquiry[0] == 'y':
+                                print('Goodbye!')
+                                doneso = True
+                                menu = False
+                            elif quit_inquiry[0] == 'n':
+                                print('\n \n \n \n \n \n \n')
+                                doneso = True
+                            else:
+                                print('Please pick a valid response.')
+                        else:
+                            print("You didn't type anything.")
+                    
+            except ValueError: 
+                print("You didn't enter a valid number.")
 
 
     elif response == '2':
